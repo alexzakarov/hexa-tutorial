@@ -1,0 +1,27 @@
+{
+  "General": {
+    "ERROR_DB": "Şu anda işleminizi gerçekleştiremiyoruz, lütfen daha sonra tekrar deneyin veya support@teamlify.co ile iletişime geçin.",
+    "ERROR_PERMISSION" : "Yetki geçersiz",
+    "ERROR_CREATE_DIRECTORY" : "Klasör oluşturma sırasında hata gerçekleşti",
+    "ERROR_VERIFICATION_CODE" : "Doğrulama kodunuz geçersiz",
+    "ERROR_SESSION" : "Bu session geçersiz",
+    "ERROR_VALIDATION" : "İletilen veri geçersiz",
+    "ERROR_NO_ROW":"Kayıt bulunamadı",
+    "ERROR_FAILED":"İşlem Başarısız",
+    "ERROR_CONFLICT": "Bu veri zaten kayıtlı",
+    "ERROR_PARSER": "İstek içeriği uygun değil",
+    "ERROR_LIMIT": "Paket limitine ulaşıldı",
+    "ERROR_HEADER": "Gerekli header bilgileri bulunamadı",
+    "HEALTH_OK": "Hazır Durumda !",
+    "OK": "İşlem başarılı sonuçlandı",
+    "OK_REGISTER": "Kayıt işlemi başarılı sonuçlandı",
+    "OK_LOGIN": "Giriş işlemi başarılı sonuçlandı"
+  },
+  "SellerRepInfo": {
+    "BANK_TRANSFER_HEADER": "Banka Havalesi",
+    "BANK_TRANSFER": "'%s' müşterisinden %.2f para transferi gerçekleştirilmiştir."
+  },
+  "ValidationErrors": {
+    "SPLIT_BANK_STATEMENT_AMOUNT": "Alınan ödeme miktarı referans alınan fiş detayı ile örtüşmüyor."
+  }
+}

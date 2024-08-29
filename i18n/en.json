@@ -1,0 +1,27 @@
+{
+  "General": {
+    "ERROR_DB": "We are currently unable to process your request. Please try again later or contact support@teamlify.co",
+    "ERROR_PERMISSION" : "Permission denied",
+    "ERROR_CREATE_DIRECTORY" : "An error occurred while directory has been creating",
+    "ERROR_VERIFICATION_CODE" : "Your verification code is not valid",
+    "ERROR_SESSION" : "Your session is invalid",
+    "ERROR_VALIDATION" : "This data is not valid",
+    "ERROR_NO_ROW":"There is no resulting data",
+    "ERROR_FAILED":"Process failed",
+    "ERROR_CONFLICT": "This data is already used",
+    "ERROR_PARSER": "The request body can not be successfully parsed",
+    "ERROR_LIMIT": "You have exceeded your package limit",
+    "ERROR_HEADER": "There are missing headers",
+    "HEALTH_OK": "Status OK !",
+    "OK": "The operation successfully finished",
+    "OK_REGISTER": "The register process is successful",
+    "OK_LOGIN": "The login process is successful"
+  },
+  "SellerRepInfo": {
+    "BANK_TRANSFER_HEADER": "Bank Transfer",
+    "BANK_TRANSFER": "Received a bank transfer for your '%s' fiche, amount of %.2f."
+  },
+  "ValidationErrors": {
+    "SPLIT_BANK_STATEMENT_AMOUNT": "Receive amount is not equal for the referenced fiche line"
+  }
+}

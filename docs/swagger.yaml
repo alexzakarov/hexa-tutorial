@@ -1,0 +1,3712 @@
+basePath: /core/v1
+definitions:
+  entities.BankFicheDetReqDto:
+    properties:
+      bank_acc_id:
+        type: integer
+      bank_acc_name:
+        type: string
+      bank_id:
+        type: integer
+      bsmv_amount:
+        type: number
+      cc_num:
+        type: string
+      credit_id:
+        type: integer
+      credit_name:
+        type: string
+      credit_proc_type:
+        type: integer
+      cur_type:
+        type: string
+      cus_bank_acc_id:
+        type: integer
+      cus_code:
+        type: string
+      cus_id:
+        type: integer
+      cus_title:
+        type: string
+      dds:
+        type: boolean
+      debt_amount:
+        type: number
+      description:
+        type: string
+      doc_num:
+        type: string
+      expense_amount:
+        type: number
+      expense_inc:
+        type: boolean
+      guarantee_type:
+        type: integer
+      issue_at:
+        type: string
+      org_id:
+        type: integer
+      receive_amount:
+        type: number
+      risc_affect:
+        type: boolean
+      sell_rep_id:
+        type: integer
+      type_of:
+        type: integer
+    type: object
+  entities.BankFicheHeader:
+    properties:
+      description:
+        type: string
+      fiche_num:
+        type: string
+      issue_at:
+        type: string
+      sell_rep_id:
+        type: integer
+      sp_code:
+        type: string
+      total:
+        type: number
+    type: object
+  entities.BankFicheLine:
+    properties:
+      bank_acc_id:
+        type: integer
+      bank_acc_name:
+        type: string
+      bank_id:
+        type: integer
+      cc_num:
+        type: string
+      cur_type:
+        type: string
+      cus_code:
+        type: string
+      cus_id:
+        type: integer
+      cus_title:
+        type: string
+      debt_amount:
+        type: number
+      description:
+        type: string
+      doc_num:
+        type: string
+      receive_amount:
+        type: number
+      total:
+        type: number
+      type_of:
+        type: integer
+    type: object
+  entities.ChangeStatusReqDto:
+    properties:
+      status:
+        type: integer
+    type: object
+  entities.CreateBankFicheHeaderReqDto:
+    properties:
+      header:
+        $ref: '#/definitions/entities.BankFicheHeader'
+      lines:
+        items:
+          $ref: '#/definitions/entities.BankFicheLine'
+        type: array
+    required:
+    - lines
+    type: object
+  entities.CreateBankFicheReqDto:
+    properties:
+      debt_amount:
+        type: number
+      description:
+        type: string
+      fiche_num:
+        type: string
+      issue_at:
+        type: string
+      receive_amount:
+        type: number
+      sell_rep_id:
+        type: integer
+      sp_code:
+        type: string
+      type_of:
+        type: integer
+    type: object
+  entities.CreateCustomerBankAccountRequestDto:
+    properties:
+      acc_num:
+        type: string
+      bank_name:
+        type: string
+      branch:
+        type: string
+      branch_num:
+        type: string
+      cur_type:
+        maxLength: 5
+        type: string
+      cus_id:
+        type: integer
+      iban:
+        type: string
+      is_active:
+        type: boolean
+      mail:
+        type: string
+      mobile:
+        type: string
+      phone:
+        type: string
+      title:
+        type: string
+    type: object
+  entities.CreateCustomerCategoryRequestDto:
+    properties:
+      is_active:
+        type: boolean
+      parent_id:
+        type: integer
+      title:
+        type: string
+    required:
+    - title
+    type: object
+  entities.CreateCustomerContactRequestDto:
+    properties:
+      city_id:
+        type: integer
+      country_id:
+        type: integer
+      cus_id:
+        type: integer
+      district_id:
+        type: integer
+      ext_num:
+        type: string
+      state_id:
+        type: integer
+      title:
+        type: string
+      town_id:
+        type: integer
+      type_of:
+        type: integer
+      value_of:
+        type: string
+      zip_code:
+        type: string
+    required:
+    - cus_id
+    type: object
+  entities.CreateCustomerGroupRequestDto:
+    properties:
+      group_code:
+        type: string
+      title:
+        type: string
+    type: object
+  entities.CreateCustomerRequestDto:
+    properties:
+      allow_eorder:
+        type: boolean
+      allowed_payments:
+        items:
+          type: integer
+        type: array
+      annotation:
+        type: string
+      card_type:
+        type: integer
+      credit_limit:
+        type: number
+      cus_code:
+        type: string
+      distributor_id:
+        type: integer
+      group_id:
+        type: integer
+      has_credit:
+        type: boolean
+      has_einvoice:
+        type: boolean
+      identity_num:
+        type: string
+      payment_term_id:
+        type: integer
+      payment_terms:
+        items:
+          type: integer
+        type: array
+      sales_frequency:
+        type: integer
+      sell_rep_id:
+        type: integer
+      sub_title:
+        type: string
+      tax_num:
+        type: string
+      tax_office:
+        type: string
+      title:
+        type: string
+      type_of:
+        type: integer
+    required:
+    - cus_code
+    - title
+    type: object
+  entities.CreateCustomerSpCodeRequestDto:
+    properties:
+      is_active:
+        type: boolean
+      sp_code:
+        type: string
+    required:
+    - sp_code
+    type: object
+  entities.CreateCustomerSpDefKeyReqDto:
+    properties:
+      cus_id:
+        type: integer
+      def_id:
+        type: integer
+      def_val:
+        type: string
+    type: object
+  entities.CreateVehicleRequestDto:
+    properties:
+      assignee_id:
+        type: integer
+      br_id:
+        type: integer
+      deputize:
+        type: string
+      filo_manager_id:
+        type: integer
+      inspection_date:
+        type: string
+      plate:
+        type: string
+      title:
+        type: string
+      wh_id:
+        type: integer
+    required:
+    - br_id
+    - plate
+    - title
+    - wh_id
+    type: object
+  entities.CustomerAvatarRequestDto:
+    properties:
+      cus_id:
+        type: integer
+      is_active:
+        type: boolean
+      org_id:
+        type: integer
+      pic_path:
+        type: string
+    type: object
+  entities.FilterOptions:
+    properties:
+      bank_acc_id:
+        type: integer
+      bank_acc_ids:
+        type: string
+      bank_id:
+        type: integer
+      bank_ids:
+        type: string
+      branch_id:
+        type: integer
+      card_type:
+        type: integer
+      card_types:
+        type: string
+      cus_code:
+        type: string
+      end_date:
+        type: string
+      fiche_id:
+        type: integer
+      fiche_ids:
+        type: string
+      fiche_num:
+        type: string
+      sell_rep_code:
+        type: string
+      sell_rep_id:
+        type: integer
+      sell_rep_ids:
+        type: string
+      sp_code:
+        type: integer
+      special_code:
+        type: string
+      start_date:
+        type: string
+      title:
+        type: string
+      type_of:
+        type: integer
+      type_ofs:
+        type: string
+      user_status:
+        type: integer
+      wh_code:
+        type: string
+    type: object
+  entities.HandlerResponse:
+    properties:
+      data: {}
+      error:
+        type: boolean
+      message:
+        type: string
+    type: object
+  entities.PaginationRequestDto:
+    properties:
+      filters:
+        $ref: '#/definitions/entities.FilterOptions'
+      limit:
+        minimum: 1
+        type: integer
+      page:
+        minimum: 1
+        type: integer
+      search:
+        maxLength: 40
+        minLength: 3
+        type: string
+    required:
+    - limit
+    - page
+    type: object
+  entities.UpdateBankFicheReqDto:
+    properties:
+      debt_amount:
+        type: number
+      description:
+        type: string
+      fiche_num:
+        type: string
+      issue_at:
+        type: string
+      receive_amount:
+        type: number
+      sell_rep_id:
+        type: integer
+      sp_code:
+        type: string
+      type_of:
+        type: integer
+    type: object
+  entities.UpdateCustomerBankAccountRequestDto:
+    properties:
+      acc_num:
+        type: string
+      bank_name:
+        type: string
+      branch:
+        type: string
+      branch_num:
+        type: string
+      cur_type:
+        maxLength: 5
+        type: string
+      cus_id:
+        type: integer
+      iban:
+        type: string
+      is_active:
+        type: boolean
+      mail:
+        type: string
+      mobile:
+        type: string
+      org_id:
+        type: integer
+      phone:
+        type: string
+      title:
+        type: string
+    type: object
+  entities.UpdateCustomerCategoryRequestDto:
+    properties:
+      is_active:
+        type: boolean
+      parent_id:
+        type: integer
+      title:
+        type: string
+    required:
+    - title
+    type: object
+  entities.UpdateCustomerContactRequestDto:
+    properties:
+      city_id:
+        type: integer
+      country_id:
+        type: integer
+      cus_id:
+        type: integer
+      district_id:
+        type: integer
+      ext_num:
+        type: string
+      state_id:
+        type: integer
+      title:
+        type: string
+      town_id:
+        type: integer
+      type_of:
+        type: integer
+      value_of:
+        type: string
+      zip_code:
+        type: string
+    type: object
+  entities.UpdateCustomerGroupRequestDto:
+    properties:
+      group_code:
+        type: string
+      title:
+        type: string
+    type: object
+  entities.UpdateCustomerRequestDto:
+    properties:
+      allow_eorder:
+        type: boolean
+      allowed_payments:
+        items:
+          type: integer
+        type: array
+      annotation:
+        type: string
+      card_type:
+        type: integer
+      credit_limit:
+        type: number
+      cus_code:
+        type: string
+      distributor_id:
+        type: integer
+      group_id:
+        type: integer
+      has_credit:
+        type: boolean
+      has_einvoice:
+        type: boolean
+      identity_num:
+        type: string
+      payment_term_id:
+        type: integer
+      payment_terms:
+        items:
+          type: integer
+        type: array
+      sales_frequency:
+        type: integer
+      sell_rep_id:
+        type: integer
+      sub_title:
+        type: string
+      tax_num:
+        type: string
+      tax_office:
+        type: string
+      title:
+        type: string
+      type_of:
+        type: integer
+    required:
+    - cus_code
+    - title
+    type: object
+  entities.UpdateCustomerSpCodeRequestDto:
+    properties:
+      is_active:
+        type: boolean
+      sp_code:
+        type: string
+    required:
+    - sp_code
+    type: object
+  entities.UpdateCustomerSpDefKeyReqDto:
+    properties:
+      cus_id:
+        type: integer
+      def_id:
+        type: integer
+      def_val:
+        type: string
+    type: object
+  entities.UpdateVehicleRequestDto:
+    properties:
+      assignee_id:
+        type: integer
+      br_id:
+        type: integer
+      deputize:
+        type: string
+      filo_manager_id:
+        type: integer
+      inspection_date:
+        type: string
+      plate:
+        type: string
+      title:
+        type: string
+      wh_id:
+        type: integer
+    required:
+    - br_id
+    - plate
+    - title
+    - wh_id
+    type: object
+  entities.VehicleCareRequestDto:
+    properties:
+      care_co:
+        type: string
+      driver_name:
+        type: string
+      last_care:
+        type: string
+      last_km:
+        type: number
+      notes:
+        type: string
+      vehicle_id:
+        type: integer
+    required:
+    - care_co
+    - driver_name
+    - last_care
+    - last_km
+    type: object
+  entities.VehicleLicRequestDto:
+    properties:
+      brand_id:
+        type: integer
+      brand_name:
+        type: string
+      chassis_num:
+        maxLength: 75
+        type: string
+      eng_cylinder:
+        maximum: 6
+        type: integer
+      eng_hp:
+        maximum: 6
+        type: integer
+      engine_num:
+        maxLength: 75
+        type: string
+      fuel_type:
+        type: integer
+      model_id:
+        type: integer
+      model_name:
+        type: string
+      model_year:
+        type: integer
+      plate:
+        type: string
+      reg_date:
+        type: string
+      reg_id:
+        type: string
+      reg_num:
+        maxLength: 75
+        type: string
+      reg_series:
+        type: string
+      reg_title:
+        type: string
+      seat_num:
+        maximum: 4
+        type: integer
+      usage_type:
+        type: integer
+      veh_color:
+        type: string
+      veh_type:
+        type: integer
+      veh_value:
+        type: string
+      vehicle_id:
+        type: integer
+    required:
+    - brand_id
+    - brand_name
+    - model_id
+    - model_name
+    - model_year
+    - plate
+    - reg_id
+    - reg_title
+    - vehicle_id
+    type: object
+  entities.VehiclePolicyRequestDto:
+    properties:
+      ins_co_name:
+        type: string
+      on_expire:
+        type: string
+      on_reg:
+        type: string
+      pol_num:
+        type: string
+      pol_renew:
+        type: string
+      pol_total:
+        type: number
+      pol_type:
+        type: integer
+      reg_id:
+        type: string
+      title:
+        type: string
+      vehicle_id:
+        type: integer
+    required:
+    - ins_co_name
+    - on_expire
+    - on_reg
+    - pol_num
+    - pol_renew
+    - pol_total
+    - pol_type
+    - reg_id
+    - title
+    - vehicle_id
+    type: object
+info:
+  contact:
+    email: sercan@teamlify.co
+  description: Core service broker with REST endpoints
+  title: Core API
+  version: "1.0"
+paths:
+  /banks/fiches/:
+    post:
+      consumes:
+      - application/json
+      description: '"CreateBankFiche Function". Gets all/fiche infos'
+      parameters:
+      - description: CreateBankFiche
+        in: body
+        name: CreateBankFiche
+        required: true
+        schema:
+          $ref: '#/definitions/entities.CreateBankFicheReqDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: CreateBankFiche Function returns/fiche's info
+      tags:
+      - Bank Fiches
+  /banks/fiches/:bank_fiche_id:
+    get:
+      consumes:
+      - application/json
+      description: '"GetBankFicheDetail Function". Gets a users''s all infos'
+      parameters:
+      - description: Login
+        in: path
+        name: bank_fiche_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetBankFicheDetail Function returns users's all infos
+      tags:
+      - Bank Fiches
+    put:
+      consumes:
+      - application/json
+      description: '"UpdateBankFiche Function". Updates a bank fiche''s infos'
+      parameters:
+      - description: Login
+        in: path
+        name: bank_fiche_id
+        required: true
+        type: integer
+      - description: Login
+        in: body
+        name: UpdateBankFiche
+        required: true
+        schema:
+          $ref: '#/definitions/entities.UpdateBankFicheReqDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: UpdateBankFiche Function updates a user
+      tags:
+      - Bank Fiches
+  /banks/fiches/all:
+    get:
+      consumes:
+      - application/json
+      description: '"GetBankFiches Function". Gets all users''s infos'
+      parameters:
+      - in: query
+        minimum: 1
+        name: limit
+        required: true
+        type: integer
+      - in: query
+        minimum: 1
+        name: page
+        required: true
+        type: integer
+      - in: query
+        maxLength: 40
+        minLength: 3
+        name: search
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetBankFiches Function returns users's infos
+      tags:
+      - Bank Fiches
+  /banks/fiches/bank_fiche_id:
+    delete:
+      consumes:
+      - application/json
+      description: '"DeleteBankFiche Function". Deletes a bank fiche'
+      parameters:
+      - description: DeleteBankFiche
+        in: path
+        name: bank_fiche_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: DeleteBankFiche Function deletes a bank fiche
+      tags:
+      - Bank Fiches
+  /banks/fiches/change-status/:bank_fiche_id:
+    put:
+      consumes:
+      - application/json
+      description: '"ChangeBankFicheStatus Function". Updates bankFiche''s status'
+      parameters:
+      - description: Login
+        in: path
+        name: bank_fiche_id
+        required: true
+        type: integer
+      - description: Login
+        in: body
+        name: ChangeBankFicheStatus
+        required: true
+        schema:
+          $ref: '#/definitions/entities.ChangeStatusReqDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: ChangeBankFicheStatus Function changes a bank fiche's status
+      tags:
+      - Bank Fiches
+  /banks/m/bank-statements:
+    get:
+      consumes:
+      - application/json
+      description: '"GetMobileBankStatements Function". Get Bank Statements for Mobile'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetBankTransfers Function gets a bank statements
+      tags:
+      - Finance
+  /banks/m/bank-statements/:fiche_det_id:
+    get:
+      consumes:
+      - application/json
+      description: '"PostponeMobileBankStatement Function". Update Bank Statement
+        postpone date'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: PostponeMobileBankStatement Function updates Bank Statement postpone
+        date
+      tags:
+      - Finance
+  /banks/tranfers:
+    get:
+      consumes:
+      - application/json
+      description: '"GetBankTransfers Function". Get bank trasfer amount'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetBankTransfers Function gets a bank trasfer amount
+      tags:
+      - Vehicle
+  /common/assignee:
+    get:
+      consumes:
+      - application/json
+      description: '"GetAssignees Function". Get assignees list'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetAssignees Function Gets a list of assignees
+      tags:
+      - Common
+  /common/bank-acc/:bank_id:
+    get:
+      consumes:
+      - application/json
+      description: '"GetBankAccList Function". List an organizations bank accounts'
+      parameters:
+      - in: query
+        name: limit
+        type: integer
+      - in: query
+        minimum: 1
+        name: page
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetBankAccList Function lists an organizations bank accounts by bank_id
+      tags:
+      - Common
+  /common/branches:
+    get:
+      consumes:
+      - application/json
+      description: '"GetBranchList Function". Get branch list'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetBranchList Function Gets a list of branches
+      tags:
+      - Common
+  /common/cashes:
+    get:
+      consumes:
+      - application/json
+      description: '"GetCashes Function". Get cash list'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetCashes Function Gets a list of cashes
+      tags:
+      - Common
+  /common/cities/{:state_id}:
+    get:
+      consumes:
+      - application/json
+      description: '"GetCities Function". Get city list'
+      parameters:
+      - description: GetCities
+        in: query
+        name: state_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetCities Function Gets a list of cities by state id
+      tags:
+      - Common
+  /common/colors:
+    get:
+      consumes:
+      - application/json
+      description: '"GetVehicleColors Function". Gets all vehicle colors'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetVehicleColors Function returns all vehicle colors
+      tags:
+      - Vehicle Helpers
+  /common/countries:
+    get:
+      consumes:
+      - application/json
+      description: '"GetCountries Function". Get country list'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetCountries Function Gets a list of all countries
+      tags:
+      - Common
+  /common/currencies:
+    get:
+      consumes:
+      - application/json
+      description: '"GetCurrencyList Function". Get a currency list'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetCurrencyList Function Gets a list of global currency list
+      tags:
+      - Common
+  /common/customers:
+    get:
+      consumes:
+      - application/json
+      description: '"GetCustomers Function". Get a customer list'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetCustomers Function Gets a list of customers
+      tags:
+      - Common
+  /common/customers/balance:
+    get:
+      consumes:
+      - application/json
+      description: '"GetCustomersBalanceBySellRep Function". Get a customer list by
+        sell rep code contains balance data'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetCustomersBalanceBySellRep Function Gets a list of customers
+      tags:
+      - Common
+  /common/customers/by-sell-rep:
+    get:
+      consumes:
+      - application/json
+      description: '"GetCustomersBySellRep Function". Get a customer list by sell
+        rep code'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetCustomersBySellRep Function Gets a list of customers
+      tags:
+      - Common
+  /common/filo-manager:
+    get:
+      consumes:
+      - application/json
+      description: '"GetFiloManagers Function". Get filo manager list'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetFiloManagers Function Gets a list of filo managers
+      tags:
+      - Common
+  /common/filters/bank:
+    get:
+      consumes:
+      - application/json
+      description: Func bank ac list
+      parameters:
+      - description: search
+        in: query
+        name: search
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: Func bank ac list
+      tags:
+      - Common
+  /common/filters/bank-acc:
+    get:
+      consumes:
+      - application/json
+      description: Func bank account list
+      parameters:
+      - description: GetBankAccAcList
+        in: path
+        name: bank_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: Func bank account list
+      tags:
+      - Common
+  /common/filters/bank-acc/:bank_id:
+    get:
+      consumes:
+      - application/json
+      description: Func bank account list
+      parameters:
+      - description: GetBankAccAcListByBankId
+        in: path
+        name: bank_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: Func bank account list
+      tags:
+      - Common
+  /common/filters/branch:
+    get:
+      consumes:
+      - application/json
+      description: Func branch ac list
+      parameters:
+      - description: search
+        in: query
+        name: search
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: Func list branch ac list
+      tags:
+      - Common
+  /common/filters/customer:
+    get:
+      consumes:
+      - application/json
+      description: Func get customer ac list
+      parameters:
+      - description: search
+        in: query
+        name: search
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: Func customer ac list
+      tags:
+      - Common
+  /common/filters/sell-rep:
+    get:
+      consumes:
+      - application/json
+      description: Func lists seller rep
+      parameters:
+      - description: search
+        in: query
+        name: search
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: Func list sell rep by jwt token org_id
+      tags:
+      - Common
+  /common/filters/wh:
+    get:
+      consumes:
+      - application/json
+      description: Func wh(warehouse) ac list
+      parameters:
+      - description: search
+        in: query
+        name: search
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: Func wh(warehouse) ac list
+      tags:
+      - Common
+  /common/states/{:country_id}:
+    get:
+      consumes:
+      - application/json
+      description: '"GetStates Function". Get state list'
+      parameters:
+      - description: GetStates
+        in: query
+        name: country_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetStates Function Gets a list of states by country id
+      tags:
+      - Common
+  /common/supervisor:
+    get:
+      consumes:
+      - application/json
+      description: '"GetSupervisors Function". Get supervisor list'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetSupervisors Function Gets a list of supervisors
+      tags:
+      - Common
+  /common/veh-fuel-types:
+    get:
+      consumes:
+      - application/json
+      description: '"GetVehicleFuelTypes Function". Gets all vehicle fuel types'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetVehicleFuelTypes Function returns all vehicle fuel types
+      tags:
+      - Vehicle Helpers
+  /common/veh-types:
+    get:
+      consumes:
+      - application/json
+      description: '"GetVehicleTypes Function". Gets all vehicle types'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetVehicleTypes Function returns all vehicle types
+      tags:
+      - Vehicle Helpers
+  /common/veh-usage-types:
+    get:
+      consumes:
+      - application/json
+      description: '"GetVehicleUsageTypes Function". Gets all vehicle usage types'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetVehicleUsageTypes Function returns all vehicle usage types
+      tags:
+      - Vehicle Helpers
+  /customers/accounting/summary/:
+    get:
+      consumes:
+      - application/json
+      description: '"GetCustomerAccountSummary Function". Gets customer account summary.'
+      parameters:
+      - description: GetCustomerAccountSummary
+        in: body
+        name: GetCustomerBankAccounts
+        required: true
+        schema:
+          $ref: '#/definitions/entities.PaginationRequestDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetCustomerAccountSummary Function get customer account summary
+      tags:
+      - Customer Accounting
+  /customers/avatar/:
+    post:
+      consumes:
+      - application/json
+      description: '"InsertCustomerAvatar Function". Inserts customer avatar. It has
+        form file field (param_name: avatar) which is required'
+      parameters:
+      - description: Login
+        in: body
+        name: InsertCustomerAvatar
+        required: true
+        schema:
+          $ref: '#/definitions/entities.CustomerAvatarRequestDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: InsertCustomerAvatar Function insert a customer avatar
+      tags:
+      - Customer Avatars
+  /customers/avatar/:avatar_id:
+    get:
+      consumes:
+      - application/json
+      description: '"GetCustomerAvatar Function". Gets customer avatar.'
+      parameters:
+      - description: Login
+        in: path
+        name: avatar_id
+        required: true
+        type: integer
+      produces:
+      - image/jpeg
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetCustomerAvatar Function get a customer avatar
+      tags:
+      - Customer Avatars
+    put:
+      consumes:
+      - application/json
+      description: '"UpdateCustomerAvatar Function". Updates customer avatar account.
+        It has form file field (param_name: avatar) which is required'
+      parameters:
+      - description: Login
+        in: path
+        name: avatar_id
+        required: true
+        type: integer
+      - description: Login
+        in: body
+        name: UpdateCustomerAvatar
+        required: true
+        schema:
+          $ref: '#/definitions/entities.CustomerAvatarRequestDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: UpdateCustomerAvatar Function updates a customer avatar
+      tags:
+      - Customer Avatars
+  /customers/avatar/all:
+    get:
+      consumes:
+      - application/json
+      description: '"GetCustomerAvatars Function". Gets customer avatars.'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetCustomerAvatars Function get customer avatars
+      tags:
+      - Customer Avatars
+  /customers/avatar/change-status/:avatar_id:
+    put:
+      consumes:
+      - application/json
+      description: '"ChangeCustomerAvatarStatus Function". Updates customer avatar
+        account''s status'
+      parameters:
+      - description: Login
+        in: body
+        name: ChangeCustomerAvatarStatus
+        required: true
+        schema:
+          $ref: '#/definitions/entities.ChangeStatusReqDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: ChangeCustomerAvatarStatus Function changes a customer avatar account's
+        status
+      tags:
+      - Customer Avatars
+  /customers/bank-acc/:
+    post:
+      consumes:
+      - application/json
+      description: '"InsertCustomerBankAccount Function". Updates customer bank account.'
+      parameters:
+      - description: Login
+        in: body
+        name: InsertCustomerBankAccount
+        required: true
+        schema:
+          $ref: '#/definitions/entities.CreateCustomerBankAccountRequestDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: InsertCustomerBankAccount Function updates a customer bank account
+      tags:
+      - Customer Bank Accounts
+  /customers/bank-acc/:bank_acc_id:
+    delete:
+      consumes:
+      - application/json
+      description: '"DeleteCustomerBankAccount Function". Deletes customer bank account'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: DeleteCustomerBankAccount Function Deletes a customer bank account
+      tags:
+      - Customer Bank Accounts
+    get:
+      consumes:
+      - application/json
+      description: '"GetCustomerBankAccount Function". Gets customer bank account.'
+      parameters:
+      - description: Login
+        in: path
+        name: bank_account_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetCustomerBankAccount Function get a customer bank account
+      tags:
+      - Customer Bank Accounts
+    put:
+      consumes:
+      - application/json
+      description: '"UpdateCustomerBankAccount Function". Updates customer bank account.'
+      parameters:
+      - description: Login
+        in: path
+        name: bank_account_id
+        required: true
+        type: integer
+      - description: Login
+        in: body
+        name: UpdateCustomerBankAccount
+        required: true
+        schema:
+          $ref: '#/definitions/entities.UpdateCustomerBankAccountRequestDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: UpdateCustomerBankAccount Function updates a customer bank account
+      tags:
+      - Customer Bank Accounts
+  /customers/bank-acc/all:
+    get:
+      consumes:
+      - application/json
+      description: '"GetCustomerBankAccounts Function". Gets customer bank accounts.'
+      parameters:
+      - description: GetCustomerBankAccounts
+        in: path
+        name: cus_id
+        required: true
+        type: integer
+      - description: Login
+        in: body
+        name: GetCustomerBankAccounts
+        required: true
+        schema:
+          $ref: '#/definitions/entities.PaginationRequestDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetCustomerBankAccounts Function get customer bank accounts
+      tags:
+      - Customer Bank Accounts
+  /customers/bank-acc/change-status/:bank_acc_id:
+    put:
+      consumes:
+      - application/json
+      description: '"ChangeCustomerBankAccountStatus Function". Updates customer bank
+        account''s status'
+      parameters:
+      - description: Login
+        in: body
+        name: ChangeCustomerBankAccountStatus
+        required: true
+        schema:
+          $ref: '#/definitions/entities.ChangeStatusReqDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: ChangeCustomerBankAccountStatus Function changes a customer bank account's
+        status
+      tags:
+      - Customer Bank Accounts
+  /customers/categories:
+    post:
+      consumes:
+      - application/json
+      description: '"CreateCustomerCategory Function". Creates a customer''s category'
+      parameters:
+      - description: CreateCustomerCategory
+        in: body
+        name: CreateCustomerCategory
+        required: true
+        schema:
+          $ref: '#/definitions/entities.CreateCustomerCategoryRequestDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: CreateCustomerCategory Function creates a customer category
+      tags:
+      - Customer Categories
+  /customers/categories/:cat_id:
+    delete:
+      consumes:
+      - application/json
+      description: '"DeleteCustomerCategory Function". Deletes a customer category'
+      parameters:
+      - description: DeleteCustomerCategory
+        in: path
+        name: cat_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: DeleteCustomerCategory Function deletes a customer category
+      tags:
+      - Customer Categories
+    put:
+      consumes:
+      - application/json
+      description: '"UpdateCustomerCategory Function". Updates a customer''s category'
+      parameters:
+      - description: UpdateCustomerCategory
+        in: path
+        name: cat_id
+        required: true
+        type: integer
+      - description: UpdateCustomerCategory
+        in: body
+        name: UpdateCustomerCategory
+        required: true
+        schema:
+          $ref: '#/definitions/entities.UpdateCustomerCategoryRequestDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: UpdateCustomerCategory Function updates a customer category
+      tags:
+      - Customer Categories
+  /customers/categories/ac-list:
+    get:
+      consumes:
+      - application/json
+      description: '"GetCustomerCategoriesAc Function". List a customer''s categories'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetCustomerCategoriesAc Function lists a customer categories
+      tags:
+      - Customer Categories
+  /customers/categories/all:
+    get:
+      consumes:
+      - application/json
+      description: '"GetCustomerCategories Function". List a customer''s categories'
+      parameters:
+      - in: query
+        minimum: 1
+        name: limit
+        required: true
+        type: integer
+      - in: query
+        minimum: 1
+        name: page
+        required: true
+        type: integer
+      - in: query
+        maxLength: 40
+        minLength: 3
+        name: search
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetCustomerCategories Function lists a customer categories
+      tags:
+      - Customer Categories
+  /customers/contact/:
+    post:
+      consumes:
+      - application/json
+      description: '"InsertCustomerContact Function". insert customer contact.'
+      parameters:
+      - description: Login
+        in: body
+        name: InsertCustomerContact
+        required: true
+        schema:
+          $ref: '#/definitions/entities.CreateCustomerContactRequestDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: InsertCustomerContact Function inserts a customer contact
+      tags:
+      - Customer Contacts
+  /customers/contact/:contact_id:
+    delete:
+      consumes:
+      - application/json
+      description: '"DeleteCustomerContact Function". deletes customer contact'
+      parameters:
+      - description: Login
+        in: body
+        name: DeleteCustomerContact
+        required: true
+        schema:
+          $ref: '#/definitions/entities.ChangeStatusReqDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: DeleteCustomerContact Function deletes a customer contact
+      tags:
+      - Customer Contacts
+    get:
+      consumes:
+      - application/json
+      description: '"GetCustomerContact Function". Gets customer contact.'
+      parameters:
+      - description: Login
+        in: path
+        name: contact_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetCustomerContact Function get a customer contact
+      tags:
+      - Customer Contacts
+    put:
+      consumes:
+      - application/json
+      description: '"UpdateCustomerBankAccount Function". Updates customer contact.'
+      parameters:
+      - description: Login
+        in: path
+        name: contact_id
+        required: true
+        type: integer
+      - description: Login
+        in: body
+        name: UpdateCustomerBankAccount
+        required: true
+        schema:
+          $ref: '#/definitions/entities.UpdateCustomerContactRequestDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: UpdateCustomerBankAccount Function updates a customer contact
+      tags:
+      - Customer Contacts
+  /customers/contact/all:
+    get:
+      consumes:
+      - application/json
+      description: '"GetCustomerContacts Function". Gets customer contacts.'
+      parameters:
+      - description: GetCustomerContacts
+        in: path
+        name: cus_id
+        required: true
+        type: integer
+      - description: Login
+        in: body
+        name: GetCustomerContacts
+        required: true
+        schema:
+          $ref: '#/definitions/entities.PaginationRequestDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetCustomerContacts Function get customer contacts
+      tags:
+      - Customer Contacts
+  /customers/customer_id:
+    delete:
+      consumes:
+      - application/json
+      description: '"DeleteCustomer Function". Deletes a customer'
+      parameters:
+      - description: DeleteCustomer
+        in: path
+        name: customer_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: DeleteCustomer Function deletes a customer
+      tags:
+      - Customers
+  /customers/group/:
+    post:
+      consumes:
+      - application/json
+      description: '"InsertCustomerGroup Function". insert customer group.'
+      parameters:
+      - description: Login
+        in: body
+        name: InsertCustomerGroup
+        required: true
+        schema:
+          $ref: '#/definitions/entities.CreateCustomerGroupRequestDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: InsertCustomerGroup Function inserts a customer group
+      tags:
+      - Customer Groups
+  /customers/group/:group_id:
+    delete:
+      consumes:
+      - application/json
+      description: '"DeleteCustomerGroup Function". Deletes customer group'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: DeleteCustomerGroup Function Deletes a customer group
+      tags:
+      - Customer Groups
+    get:
+      consumes:
+      - application/json
+      description: '"GetCustomerGroup Function". Gets customer groups.'
+      parameters:
+      - description: Login
+        in: path
+        name: group_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetCustomerGroup Function get a customer groups
+      tags:
+      - Customer Groups
+    put:
+      consumes:
+      - application/json
+      description: '"UpdateCustomerGroup Function". Updates customer group.'
+      parameters:
+      - description: Login
+        in: path
+        name: group_id
+        required: true
+        type: integer
+      - description: Login
+        in: body
+        name: UpdateCustomerGroup
+        required: true
+        schema:
+          $ref: '#/definitions/entities.UpdateCustomerGroupRequestDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: UpdateCustomerGroup Function updates a customer group
+      tags:
+      - Customer Groups
+  /customers/group/all:
+    get:
+      consumes:
+      - application/json
+      description: '"GetCustomerGroups Function". Gets customer groups.'
+      parameters:
+      - description: Login
+        in: body
+        name: GetCustomerGroups
+        required: true
+        schema:
+          $ref: '#/definitions/entities.PaginationRequestDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetCustomerGroups Function get customer groups
+      tags:
+      - Customer Groups
+  /customers/group/change-status/:group_id:
+    put:
+      consumes:
+      - application/json
+      description: '"ChangeCustomerGroupStatus Function". Updates customer group''s
+        status'
+      parameters:
+      - description: Login
+        in: body
+        name: ChangeCustomerGroupStatus
+        required: true
+        schema:
+          $ref: '#/definitions/entities.ChangeStatusReqDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: ChangeCustomerGroupStatus Function changes a customer group's status
+      tags:
+      - Customer Groups
+  /customers/info/:
+    post:
+      consumes:
+      - application/json
+      description: '"CreateCustomer Function". Gets all customers infos'
+      parameters:
+      - description: CreateCustomer
+        in: body
+        name: CreateCustomer
+        required: true
+        schema:
+          $ref: '#/definitions/entities.CreateCustomerRequestDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: CreateCustomer Function returns customers's info
+      tags:
+      - Customers
+  /customers/info/:customer_id:
+    get:
+      consumes:
+      - application/json
+      description: '"GetCustomerCard Function". Gets a users''s all infos'
+      parameters:
+      - description: Login
+        in: path
+        name: customer_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetCustomerCard Function returns users's all infos
+      tags:
+      - Customers
+    put:
+      consumes:
+      - application/json
+      description: '"UpdateCustomer Function". Updates a customer''s infos'
+      parameters:
+      - description: Login
+        in: path
+        name: customer_id
+        required: true
+        type: integer
+      - description: Login
+        in: body
+        name: UpdateCustomer
+        required: true
+        schema:
+          $ref: '#/definitions/entities.UpdateCustomerRequestDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: UpdateCustomer Function updates a user
+      tags:
+      - Customers
+  /customers/info/all:
+    get:
+      consumes:
+      - application/json
+      description: '"GetCustomers Function". Gets all users''s infos'
+      parameters:
+      - in: query
+        minimum: 1
+        name: limit
+        required: true
+        type: integer
+      - in: query
+        minimum: 1
+        name: page
+        required: true
+        type: integer
+      - in: query
+        maxLength: 40
+        minLength: 3
+        name: search
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetCustomers Function returns users's infos
+      tags:
+      - Customers
+  /customers/info/change-status/:customer_id:
+    put:
+      consumes:
+      - application/json
+      description: '"ChangeCustomerStatus Function". Updates customer''s status'
+      parameters:
+      - description: Login
+        in: path
+        name: customer_id
+        required: true
+        type: integer
+      - description: Login
+        in: body
+        name: ChangeCustomerStatus
+        required: true
+        schema:
+          $ref: '#/definitions/entities.ChangeStatusReqDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: ChangeCustomerStatus Function changes a customer's status
+      tags:
+      - Customers
+  /customers/info/transactions/:customer_id:
+    get:
+      consumes:
+      - application/json
+      description: '"GetCustomerTransactions Function". Gets a user''s transactions
+        details'
+      parameters:
+      - description: Login
+        in: path
+        name: customer_id
+        required: true
+        type: integer
+      - description: Login
+        in: body
+        name: GetCustomerTransactions
+        required: true
+        schema:
+          $ref: '#/definitions/entities.PaginationRequestDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetCustomerTransactions Function returns users's transactions
+      tags:
+      - Customers
+  /customers/sp-code/:
+    post:
+      consumes:
+      - application/json
+      description: '"CreateCustomerSpCode Function". Creates a customer''s sp code'
+      parameters:
+      - description: CreateCustomerSpCode
+        in: body
+        name: CreateCustomerSpCode
+        required: true
+        schema:
+          $ref: '#/definitions/entities.CreateCustomerSpCodeRequestDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: CreateCustomerSpCode Function creates a customer sp code
+      tags:
+      - Customer Sp Codes
+  /customers/sp-code/:sp_code_id:
+    delete:
+      consumes:
+      - application/json
+      description: '"DeleteCustomerSpCode Function". Deletes a organization sp code'
+      parameters:
+      - description: DeleteCustomerSpCode
+        in: path
+        name: sp_code_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: DeleteCustomerSpCode Function deletes a organization sp code
+      tags:
+      - Customer Sp Codes
+    get:
+      consumes:
+      - application/json
+      description: '"GetCustomerSpCode Function". Gets all organization''s sp codes'
+      parameters:
+      - description: UpdateCustomerSpCode
+        in: path
+        name: sp_code_id
+        required: true
+        type: integer
+      - in: query
+        minimum: 1
+        name: limit
+        required: true
+        type: integer
+      - in: query
+        minimum: 1
+        name: page
+        required: true
+        type: integer
+      - in: query
+        maxLength: 40
+        minLength: 3
+        name: search
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetCustomerSpCode Function returns organization's sp code
+      tags:
+      - Customer Sp Codes
+    put:
+      consumes:
+      - application/json
+      description: '"UpdateCustomerSpCode Function". Updates a customer''s sp code'
+      parameters:
+      - description: UpdateCustomerSpCode
+        in: path
+        name: sp_code_id
+        required: true
+        type: integer
+      - description: UpdateCustomerSpCode
+        in: body
+        name: UpdateCustomerSpCode
+        required: true
+        schema:
+          $ref: '#/definitions/entities.UpdateCustomerSpCodeRequestDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: UpdateCustomerSpCode Function updates a customer sp code
+      tags:
+      - Customer Sp Codes
+  /customers/sp-code/ac-list:
+    get:
+      consumes:
+      - application/json
+      description: '"GetCustomerSpCodes Function". Gets all organization''s sp codes'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetCustomerSpCodesAc Function returns organization's sp codes
+      tags:
+      - Customer Sp Codes
+  /customers/sp-code/all:
+    get:
+      consumes:
+      - application/json
+      description: '"GetCustomerSpCodes Function". Gets all organization''s sp codes'
+      parameters:
+      - in: query
+        minimum: 1
+        name: limit
+        required: true
+        type: integer
+      - in: query
+        minimum: 1
+        name: page
+        required: true
+        type: integer
+      - in: query
+        maxLength: 40
+        minLength: 3
+        name: search
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetCustomerSpCodes Function returns organization's sp code
+      tags:
+      - Customer Sp Codes
+  /customers/sp-code/change-status/:sp_code_id:
+    put:
+      consumes:
+      - application/json
+      description: '"ChangeCustomerSpCodeStatus Function". Updates a organization''s
+        sp code'
+      parameters:
+      - description: Login
+        in: body
+        name: ChangeCustomerSpCodeStatus
+        required: true
+        schema:
+          $ref: '#/definitions/entities.ChangeStatusReqDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: ChangeCustomerSpCodeStatus Function changes a organization's sp code
+      tags:
+      - Customer Sp Codes
+  /customers/sp-def-key/:
+    post:
+      consumes:
+      - application/json
+      description: '"CreateCustomerSpDefKey Function". insert customer special defined
+        key.'
+      parameters:
+      - description: Login
+        in: body
+        name: CreateCustomerSpDefKey
+        required: true
+        schema:
+          $ref: '#/definitions/entities.CreateCustomerSpDefKeyReqDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: CreateCustomerSpDefKey Function inserts a customer special defined
+        key
+      tags:
+      - Customer Special Defined Keys
+  /customers/sp-def-key/:sp_def_key_id:
+    delete:
+      consumes:
+      - application/json
+      description: '"DeleteCustomerSpDefKey Function". Deletes customer special defined
+        key'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: DeleteCustomerSpDefKey Function Deletes a customer special defined
+        key
+      tags:
+      - Customer Special Defined Keys
+    get:
+      consumes:
+      - application/json
+      description: '"GetCustomerSpDefKey Function". Gets customer special defined
+        keys.'
+      parameters:
+      - description: Login
+        in: path
+        name: sp_def_key_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetCustomerSpDefKey Function get a customer special defined keys
+      tags:
+      - Customer Special Defined Keys
+    put:
+      consumes:
+      - application/json
+      description: '"UpdateCustomerSpDefKey Function". Updates customer special defined
+        key.'
+      parameters:
+      - description: Login
+        in: path
+        name: sp_def_key_id
+        required: true
+        type: integer
+      - description: Login
+        in: body
+        name: UpdateCustomerSpDefKey
+        required: true
+        schema:
+          $ref: '#/definitions/entities.UpdateCustomerSpDefKeyReqDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: UpdateCustomerSpDefKey Function updates a customer special defined
+        key
+      tags:
+      - Customer Special Defined Keys
+  /customers/sp-def-key/ac-list/:
+    get:
+      consumes:
+      - application/json
+      description: '"GetCustomerSpDefKeysAcList Function". Gets customer special defined
+        keys auto complete list.'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetCustomerSpDefKeysAcList Function get customer special defined keys
+        auto complete list
+      tags:
+      - Customer Special Defined Keys
+  /customers/sp-def-key/all/:cus_id:
+    get:
+      consumes:
+      - application/json
+      description: '"GetCustomerSpDefKeys Function". Gets customer special defined
+        keys.'
+      parameters:
+      - description: GetCustomerSpDefKeys
+        in: path
+        name: cus_id
+        required: true
+        type: integer
+      - description: Login
+        in: body
+        name: GetCustomerSpDefKeys
+        required: true
+        schema:
+          $ref: '#/definitions/entities.PaginationRequestDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetCustomerSpDefKeys Function get customer special defined keys
+      tags:
+      - Customer Special Defined Keys
+  /customers/sp-def-key/change-status/:sp_def_key_id:
+    put:
+      consumes:
+      - application/json
+      description: '"ChangeCustomerSpDefKeyStatus Function". Updates customer special
+        defined key''s status'
+      parameters:
+      - description: Login
+        in: body
+        name: ChangeCustomerSpDefKeyStatus
+        required: true
+        schema:
+          $ref: '#/definitions/entities.ChangeStatusReqDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: ChangeCustomerSpDefKeyStatus Function changes a customer special defined
+        key's status
+      tags:
+      - Customer Special Defined Keys
+  /fiche-dets/:
+    post:
+      consumes:
+      - application/json
+      description: '"CreateBankFicheDet Function". Creates fiche detail infos'
+      parameters:
+      - description: CreateBankFicheDet
+        in: body
+        name: CreateBankFicheDet
+        required: true
+        schema:
+          $ref: '#/definitions/entities.BankFicheDetReqDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: CreateBankFicheDet Function creates fiche detail's info
+      tags:
+      - Bank Fiche Details
+  /fiche-dets/:bank_fiche_det_id:
+    get:
+      consumes:
+      - application/json
+      description: '"GetBankFicheDetDetail Function". Gets a users''s all infos'
+      parameters:
+      - description: GetBankFicheDetDetail
+        in: path
+        name: bank_fiche_det_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetBankFicheDetDetail Function returns users's all infos
+      tags:
+      - Bank Fiche Details
+    put:
+      consumes:
+      - application/json
+      description: '"UpdateBankFicheDet Function". Updates a bank fiche detail''s
+        infos'
+      parameters:
+      - description: GetBankFicheDetDetail
+        in: path
+        name: bank_fiche_det_id
+        required: true
+        type: integer
+      - description: GetBankFicheDetDetail
+        in: body
+        name: UpdateBankFicheDet
+        required: true
+        schema:
+          $ref: '#/definitions/entities.BankFicheDetReqDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: UpdateBankFicheDet Function updates a user
+      tags:
+      - Bank Fiche Details
+  /fiche-dets/all:
+    get:
+      consumes:
+      - application/json
+      description: '"GetBankFicheDets Function". Gets all users''s infos'
+      parameters:
+      - in: query
+        minimum: 1
+        name: limit
+        required: true
+        type: integer
+      - in: query
+        minimum: 1
+        name: page
+        required: true
+        type: integer
+      - in: query
+        maxLength: 40
+        minLength: 3
+        name: search
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetBankFicheDets Function returns users's infos
+      tags:
+      - Bank Fiche Details
+  /fiche-dets/bank_fiche_det_id:
+    delete:
+      consumes:
+      - application/json
+      description: '"DeleteBankFicheDet Function". Deletes a bank fiche det'
+      parameters:
+      - description: DeleteBankFicheDet
+        in: path
+        name: bank_fiche_det_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: DeleteBankFicheDet Function deletes a bank fiche det
+      tags:
+      - Bank Fiche Details
+  /fiche-dets/change-status/:bank_fiche_det_id:
+    put:
+      consumes:
+      - application/json
+      description: '"ChangeBankFicheDetStatus Function". Updates bank fiche det''s
+        status'
+      parameters:
+      - description: GetBankFicheDetDetail
+        in: path
+        name: bank_fiche_det_id
+        required: true
+        type: integer
+      - description: GetBankFicheDetDetail
+        in: body
+        name: ChangeBankFicheDetStatus
+        required: true
+        schema:
+          $ref: '#/definitions/entities.ChangeStatusReqDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: ChangeBankFicheDetStatus Function changes a bank fiche det's status
+      tags:
+      - Bank Fiche Details
+  /fiche-dets/split/:bank_fiche_det_id:
+    put:
+      consumes:
+      - application/json
+      description: '"SplitBankFicheDet Function". Splits fiche detail infos'
+      parameters:
+      - description: SplitBankFicheDet
+        in: path
+        name: bank_fiche_det_id
+        required: true
+        type: integer
+      - description: SplitBankFicheDet
+        in: body
+        name: SplitBankFicheDet
+        required: true
+        schema:
+          $ref: '#/definitions/entities.BankFicheDetReqDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: SplitBankFicheDet Function splits fiche detail's info
+      tags:
+      - Bank Fiche Details
+  /fiches/header:
+    post:
+      consumes:
+      - application/json
+      description: '"CreateBankFicheHeader Function". Creates a fiche header and line
+        infos'
+      parameters:
+      - description: CreateBankFicheHeader
+        in: body
+        name: CreateBankFicheHeader
+        required: true
+        schema:
+          $ref: '#/definitions/entities.CreateBankFicheHeaderReqDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: CreateBankFicheHeader Function Creates a fiche header and line infos
+      tags:
+      - Bank Fiches General
+  /vehicles/:
+    post:
+      consumes:
+      - application/json
+      description: '"CreateVehicle Function". Create a vehicle'
+      parameters:
+      - description: CreateVehicle
+        in: body
+        name: CreateVehicle
+        required: true
+        schema:
+          $ref: '#/definitions/entities.CreateVehicleRequestDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: CreateVehicle Function creates a vehicle
+      tags:
+      - Vehicle
+  /vehicles/:veh_id:
+    delete:
+      consumes:
+      - application/json
+      description: '"DeleteVehicle Function". Deletes vehicle'
+      parameters:
+      - description: DeleteVehicle
+        in: path
+        name: veh_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: DeleteVehicle Function deletes vehicle by given id
+      tags:
+      - Vehicle
+    get:
+      consumes:
+      - application/json
+      description: '"GetVehicle Function". Gets single vehicle'
+      parameters:
+      - description: GetVehicle
+        in: path
+        name: veh_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetVehicle Function returns single vehicle
+      tags:
+      - Vehicle
+    put:
+      consumes:
+      - application/json
+      description: '"UpdateVehicle Function". Update a vehicle'
+      parameters:
+      - description: UpdateVehicle
+        in: path
+        name: veh_id
+        required: true
+        type: integer
+      - description: UpdateVehicle
+        in: body
+        name: UpdateVehicle
+        required: true
+        schema:
+          $ref: '#/definitions/entities.UpdateVehicleRequestDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: UpdateVehicle Function updates a vehicle with given id
+      tags:
+      - Vehicle
+  /vehicles/all:
+    get:
+      consumes:
+      - application/json
+      description: '"GetVehicles Function". Gets all vehicles'
+      parameters:
+      - in: query
+        minimum: 1
+        name: limit
+        required: true
+        type: integer
+      - in: query
+        minimum: 1
+        name: page
+        required: true
+        type: integer
+      - in: query
+        maxLength: 40
+        minLength: 3
+        name: search
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetVehicles Function returns all vehicles
+      tags:
+      - Vehicle
+  /vehicles/all/:veh_id:
+    get:
+      consumes:
+      - application/json
+      description: '"GetVehicleCares Function". Gets all vehicle cares'
+      parameters:
+      - description: GetVehicleCares
+        in: path
+        name: veh_id
+        required: true
+        type: integer
+      - in: query
+        name: br_id
+        type: integer
+      - in: query
+        name: limit
+        type: integer
+      - in: query
+        name: page
+        type: integer
+      - in: query
+        name: search
+        type: string
+      - in: query
+        name: wh_id
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetVehicleCares Function returns all vehicle cares
+      tags:
+      - Vehicle Care
+  /vehicles/brands/all:
+    get:
+      consumes:
+      - application/json
+      description: '"GetVehicleBrands Function". Gets vehicle brands'
+      parameters:
+      - in: query
+        minimum: 1
+        name: limit
+        required: true
+        type: integer
+      - in: query
+        minimum: 1
+        name: page
+        required: true
+        type: integer
+      - in: query
+        maxLength: 40
+        minLength: 3
+        name: search
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetVehicleBrands Function returns all brands
+      tags:
+      - Vehicle
+  /vehicles/care:
+    post:
+      consumes:
+      - application/json
+      description: '"CreateVehicleCare Function". Create a vehicle care'
+      parameters:
+      - description: CreateVehicleCare
+        in: body
+        name: CreateVehicleCare
+        required: true
+        schema:
+          $ref: '#/definitions/entities.VehicleCareRequestDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: CreateVehicleCare Function creates a vehicle care
+      tags:
+      - Vehicle Care
+  /vehicles/care/:care_id:
+    delete:
+      consumes:
+      - application/json
+      description: '"DeleteVehicleCare Function". Deletes vehicle care'
+      parameters:
+      - description: DeleteVehicleCare
+        in: path
+        name: care_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: DeleteVehicleCare Function deletes vehicle care by given id
+      tags:
+      - Vehicle Care
+    put:
+      consumes:
+      - application/json
+      description: '"UpdateVehicleCare Function". Update a vehicle care'
+      parameters:
+      - description: UpdateVehicleCare
+        in: path
+        name: care_id
+        required: true
+        type: integer
+      - description: UpdateVehicleCare
+        in: body
+        name: UpdateVehicleCare
+        required: true
+        schema:
+          $ref: '#/definitions/entities.VehicleCareRequestDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: UpdateVehicleCare Function updates a vehicle care with given care_id
+      tags:
+      - Vehicle Care
+  /vehicles/care/info/:care_id:
+    get:
+      consumes:
+      - application/json
+      description: '"GetVehicleCare Function". Gets single vehicle care'
+      parameters:
+      - description: GetVehicleCare
+        in: path
+        name: care_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetVehicleCare Function returns single vehicle care info
+      tags:
+      - Vehicle Care
+  /vehicles/license/:
+    post:
+      consumes:
+      - application/json
+      description: '"CreateVehicleLicense Function". Create a vehicle license'
+      parameters:
+      - description: CreateVehicleLicense
+        in: body
+        name: CreateVehicleLic
+        required: true
+        schema:
+          $ref: '#/definitions/entities.VehicleLicRequestDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: CreateVehicleLic Function creates a vehicle license
+      tags:
+      - Vehicle License
+  /vehicles/license/:lic_id:
+    delete:
+      consumes:
+      - application/json
+      description: '"RemoveVehicleLic Function". Deletes vehicle license'
+      parameters:
+      - description: RemoveVehicleLic
+        in: path
+        name: lic_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: RemoveVehicleLic Function deletes vehicle license by given id
+      tags:
+      - Vehicle License
+    put:
+      consumes:
+      - application/json
+      description: '"UpdateVehicleLic Function". Update a vehicle license'
+      parameters:
+      - description: UpdateVehicleLic
+        in: path
+        name: lic_id
+        required: true
+        type: integer
+      - description: UpdateVehicleLic
+        in: body
+        name: UpdateVehicleLic
+        required: true
+        schema:
+          $ref: '#/definitions/entities.VehicleLicRequestDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: UpdateVehicleLic Function updates a vehicle license with given id
+      tags:
+      - Vehicle License
+  /vehicles/license/all/:veh_id:
+    get:
+      consumes:
+      - application/json
+      description: '"GetVehicleLics Function". Gets all vehicle licenses'
+      parameters:
+      - description: GetVehicleLics
+        in: path
+        name: veh_id
+        required: true
+        type: integer
+      - in: query
+        name: br_id
+        type: integer
+      - in: query
+        name: limit
+        type: integer
+      - in: query
+        name: page
+        type: integer
+      - in: query
+        name: search
+        type: string
+      - in: query
+        name: wh_id
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetVehicleLics Function returns all vehicle licenses
+      tags:
+      - Vehicle License
+  /vehicles/license/detail/:veh_id:
+    get:
+      consumes:
+      - application/json
+      description: '"GetVehicleLic Function". Gets  vehicle license info by veh_id'
+      parameters:
+      - description: GetVehicleLic
+        in: path
+        name: veh_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetVehicleLicInfo Function returns single vehicle license
+      tags:
+      - Vehicle License
+  /vehicles/license/info/:lic_id:
+    get:
+      consumes:
+      - application/json
+      description: '"GetVehicleLicInfo Function". Gets  vehicle license info by lic_id'
+      parameters:
+      - description: GetVehicleLicInfo
+        in: path
+        name: lic_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetVehicleLicInfo Function returns single vehicle license
+      tags:
+      - Vehicle License
+  /vehicles/models/all/:brand_code:
+    get:
+      consumes:
+      - application/json
+      description: '"GetVehicleModels Function". Gets vehicle models by brand code'
+      parameters:
+      - description: GetVehicleModels
+        in: path
+        name: brand_code
+        required: true
+        type: integer
+      - in: query
+        minimum: 1
+        name: limit
+        required: true
+        type: integer
+      - in: query
+        minimum: 1
+        name: page
+        required: true
+        type: integer
+      - in: query
+        maxLength: 40
+        minLength: 3
+        name: search
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetVehicleModels Function returns all models by given brand_code
+      tags:
+      - Vehicle
+  /vehicles/policy/:
+    post:
+      consumes:
+      - application/json
+      description: '"CreateVehiclePolicy Function". Create a vehicle policy'
+      parameters:
+      - description: CreateVehiclePolicy
+        in: body
+        name: CreateVehiclePolicy
+        required: true
+        schema:
+          $ref: '#/definitions/entities.VehiclePolicyRequestDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: CreateVehiclePolicy Function creates a vehicle policy
+      tags:
+      - Vehicle Policy
+  /vehicles/policy/:pol_id:
+    delete:
+      consumes:
+      - application/json
+      description: '"DeleteVehiclePolicy Function". Deletes vehicle policy'
+      parameters:
+      - description: DeleteVehiclePolicy
+        in: path
+        name: pol_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: DeleteVehiclePolicy Function deletes vehicle policy by given id
+      tags:
+      - Vehicle Policy
+    put:
+      consumes:
+      - application/json
+      description: '"UpdateVehiclePolicy Function". Update a vehicle policy'
+      parameters:
+      - description: UpdateVehicle
+        in: path
+        name: pol_id
+        required: true
+        type: integer
+      - description: UpdateVehiclePolicy
+        in: body
+        name: UpdateVehiclePolicy
+        required: true
+        schema:
+          $ref: '#/definitions/entities.VehiclePolicyRequestDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: UpdateVehiclePolicy Function updates a vehicle policy with given id
+      tags:
+      - Vehicle Policy
+  /vehicles/policy/all/:veh_id:
+    get:
+      consumes:
+      - application/json
+      description: '"GetVehiclePolicies Function". Gets all vehicle policies'
+      parameters:
+      - description: GetVehiclePolicies
+        in: path
+        name: veh_id
+        required: true
+        type: integer
+      - in: query
+        name: br_id
+        type: integer
+      - in: query
+        name: limit
+        type: integer
+      - in: query
+        name: page
+        type: integer
+      - in: query
+        name: search
+        type: string
+      - in: query
+        name: wh_id
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetVehiclePolicies Function returns all vehicle policies
+      tags:
+      - Vehicle Policy
+  /vehicles/policy/info/:pol_id:
+    get:
+      consumes:
+      - application/json
+      description: '"GetVehiclePolicy Function". Gets single vehicle policy'
+      parameters:
+      - description: GetVehiclePolicy
+        in: path
+        name: pol_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: GetVehiclePolicy Function returns single vehicle policy data
+      tags:
+      - Vehicle Policy
+swagger: "2.0"
