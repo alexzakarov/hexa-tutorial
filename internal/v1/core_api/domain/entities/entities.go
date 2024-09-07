@@ -14,3 +14,7 @@ type PaginationRequestDto struct {
 type SearchRequestDto struct {
 	Search string `json:"search" query:"search"`
 }
+
+type UserData struct {
+	UserId int64 `json:"user_id"`
+}

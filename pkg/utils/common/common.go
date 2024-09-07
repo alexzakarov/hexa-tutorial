@@ -116,13 +116,7 @@ func GetAuthDataFromToken(c *fiber.Ctx) (dat ent.UserData) {
 	claims := user.Claims.(jwt.MapClaims)
 
 	mapper := ent.UserData{
-		UserId:       int64(claims["user_id"].(float64)),
-		CurOrgId:     int64(claims["cur_org_id"].(float64)),
-		TenantId:     int64(claims["tenant_id"].(float64)),
-		PersonalCode: claims["personal_code"].(string),
-		AuthTitle:    claims["auth_title"].(string),
-		DefLang:      claims["def_lang"].(string),
-		OrgIds:       claims["org_ids"].([]interface{}),
+		UserId: int64(claims["user_id"].(float64)),
 	}
 
 	return mapper
