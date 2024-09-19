@@ -16,7 +16,8 @@ func MapRoutes(cfg *config.Config, h ports.IHandlers, router fiber.Router) {
 			SigningKey: []byte(cfg.Server.APP_SECRET),
 		})
 		//region Common
-		common := router.Group("/common").Use(jwts)
-		common.Get("/customers", h.GetCustomers)
+
 	*/
+	common := router.Group("/auth")
+	common.Post("/users", h.CreateUser)
 }

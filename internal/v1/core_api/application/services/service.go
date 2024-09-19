@@ -2,6 +2,7 @@ package services
 
 import (
 	"main/config"
+	"main/internal/v1/core_api/domain/entities"
 	"main/internal/v1/core_api/domain/ports"
 	"main/pkg/logger"
 )
@@ -20,6 +21,23 @@ func NewCoreService(cfg *config.Config, pgRepo ports.IPostgresqlRepository, logg
 		pgRepo: pgRepo,
 		logger: logger,
 	}
+}
+
+func (s serviceCore) CreateUser(req_dat entities.UserReqDto) error {
+	return s.pgRepo.CreateUser(req_dat)
+
+}
+
+func (s serviceCore) GetUserById(userId int) (string, string, error) {
+	return s.pgRepo.GetUserById(userId)
+}
+
+func (s serviceCore) UpdateUser(userId int, newUsername, newEmail string) error {
+	return s.pgRepo.UpdateUser(userId, newUsername, newEmail)
+}
+
+func (s serviceCore) DeleteUser(userId int) error {
+	return s.pgRepo.DeleteUser(userId)
 }
 
 // Example Service

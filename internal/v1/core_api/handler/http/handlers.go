@@ -2,9 +2,13 @@ package http
 
 import (
 	"context"
+	"github.com/gofiber/fiber/v2"
 	"main/config"
+	ent "main/internal/v1/core_api/domain/entities"
 	"main/internal/v1/core_api/domain/ports"
 	"main/pkg/logger"
+	cm "main/pkg/utils/common"
+	"main/pkg/utils/validator"
 )
 
 // handlerHttp Core handlers
@@ -13,6 +17,52 @@ type HandlerHttp struct {
 	cfg     *config.Config
 	service ports.IService
 	logger  logger.Logger
+}
+
+func (h HandlerHttp) CreateUser(c *fiber.Ctx) error {
+	var responser fiber.Map
+	var statusCode int
+	var data interface{}
+	dat := ent.UserReqDto{}
+
+	errParser := c.BodyParser(&dat)
+	if errParser != nil {
+		statusCode, responser = fiber.StatusBadGateway, cm.HTTPResponser(nil, true, errParser.Error())
+		return c.Status(statusCode).JSON(responser) // Hemen yanıtı döndür
+	}
+
+	errValidate := validator.Validate.Struct(dat)
+	if errValidate != nil {
+		statusCode, responser = fiber.StatusBadRequest, cm.HTTPResponser(nil, true, errValidate.Error())
+		return c.Status(statusCode).JSON(responser) // Hemen yanıtı döndür
+	}
+
+	if errParser == nil && errValidate == nil {
+		err := h.service.CreateUser(dat)
+		if err != nil {
+			statusCode, responser = fiber.StatusInternalServerError, cm.HTTPResponser(nil, true, cm.Translate("tr", "General.ERROR_DB"))
+		} else {
+			statusCode, responser = fiber.StatusOK, cm.HTTPResponser(data, false, cm.Translate("tr", "General.OK"))
+		}
+	}
+
+	return c.Status(statusCode).JSON(responser)
+
+}
+
+func (h HandlerHttp) GetUserById(c *fiber.Ctx) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (h HandlerHttp) UpdateUser(c *fiber.Ctx) error {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (h HandlerHttp) DeleteUser(c *fiber.Ctx) error {
+	//TODO implement me
+	panic("implement me")
 }
 
 // NewHttpHandler Core Domain HTTP handlers constructor

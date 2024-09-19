@@ -18,3 +18,13 @@ type SearchRequestDto struct {
 type UserData struct {
 	UserId int64 `json:"user_id"`
 }
+
+type UserReqDto struct {
+	RoleId   int64  `json:"role_id"`
+	Email    string `json:"email"`
+	Phone    string `json:"phone"`
+	Address  string `json:"address"`
+	UserName string `json:"user_name"`
+	Password string `json:"password"`
+	HasGdpr  bool   `json:"has_gdpr"`
+}

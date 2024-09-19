@@ -76,3 +76,55 @@ func main() {
 
 	appLogger.Info("Server Exited Properly")
 }
+
+//kontrol ettir,
+
+//func main() {
+//	// Konfigürasyonu okuyun
+//	cfg, err := config.ParseConfig()
+//	if err != nil {
+//		log.Fatal(err)
+//	}
+//
+//	// PostgreSQL bağlantısını oluşturun
+//	connStr := "postgres://postgres:your_password@localhost:5432/postgres"
+//	config, err := pgxpool.ParseConfig(connStr)
+//	if err != nil {
+//		log.Fatal("Error configuring the database: ", err)
+//	}
+//
+//	dbpool, err := pgxpool.ConnectConfig(context.Background(), config)
+//	if err != nil {
+//		log.Fatal("Unable to connect to the database: ", err)
+//	}
+//	defer dbpool.Close()
+//
+//	// Repositoryyi oluşturun
+//	repo := repository.NewPostgresqlRepository(context.Background(), dbpool)
+//
+//	// Create (Kullanıcı ekleme)
+//	err = repo.CreateUser("john_doe", "john@example.com")
+//	if err != nil {
+//		fmt.Println("Error creating user:", err)
+//	}
+//
+//	// Read (Kullanıcı okuma)
+//	username, email, err := repo.GetUserById(1)
+//	if err != nil {
+//		fmt.Println("Error getting user:", err)
+//	} else {
+//		fmt.Printf("User: %s, Email: %s\n", username, email)
+//	}
+//
+//	// Update (Kullanıcı güncelleme)
+//	err = repo.UpdateUser(1, "john_updated", "john_updated@example.com")
+//	if err != nil {
+//		fmt.Println("Error updating user:", err)
+//	}
+//
+//	// Delete (Kullanıcı silme)
+//	err = repo.DeleteUser(1)
+//	if err != nil {
+//		fmt.Println("Error deleting user:", err)
+//	}
+//}
