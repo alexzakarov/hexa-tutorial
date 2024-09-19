@@ -46,9 +46,10 @@ func (r *postgresqlRepo) GetUserById(userId int) (string, string, error) {
 
 // update
 func (r *postgresqlRepo) UpdateUser(user_id int, req_dat entities.UserReqDto) error {
-	query := `UPDATE users SET username = $1, email = $2, updated_at = CURRENT_TIME WHERE id = $3`
+	query := `UPDATE users.users SET user_name = $1, email = $2, updated_at = CURRENT_TIMESTAMP WHERE id = $3`
 	_, err := r.db.Exec(r.ctx, query, req_dat.UserName, req_dat.Email, user_id)
 	if err != nil {
+		fmt.Println(err.Error())
 		return err
 	}
 	return nil
