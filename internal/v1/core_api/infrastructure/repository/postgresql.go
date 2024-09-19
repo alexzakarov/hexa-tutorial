@@ -24,8 +24,8 @@ func NewPostgresqlRepository(ctx context.Context, db *pgxpool.Pool) ports.IPostg
 
 // create
 func (r *postgresqlRepo) CreateUser(req_dat entities.UserReqDto) error {
-	query := `INSERT INTO users.users (role_id, email, phone, address, user_name,  password ) VALUES ($1, $2, $3, $4, $5, $6)`
-	_, err := r.db.Exec(r.ctx, query, req_dat.RoleId, req_dat.Email, req_dat.Phone, req_dat.Address, req_dat.UserName, req_dat.Password)
+	query := `INSERT INTO users.users (role_id, email, phone, address, user_name,  password, has_gdpr) VALUES ($1, $2, $3, $4, $5, $6, $7)`
+	_, err := r.db.Exec(r.ctx, query, req_dat.RoleId, req_dat.Email, req_dat.Phone, req_dat.Address, req_dat.UserName, req_dat.Password, req_dat.HasGdpr)
 	if err != nil {
 		fmt.Println(err.Error())
 		return err
@@ -45,9 +45,9 @@ func (r *postgresqlRepo) GetUserById(userId int) (string, string, error) {
 }
 
 // update
-func (r *postgresqlRepo) UpdateUser(userId int, newUsername, newEmail string) error {
-	query := `UPDATE users SET username = $1, email = $2 WHERE id = $3`
-	_, err := r.db.Exec(r.ctx, query, newUsername, newEmail, userId)
+func (r *postgresqlRepo) UpdateUser(user_id int, req_dat entities.UserReqDto) error {
+	query := `UPDATE users SET username = $1, email = $2, updated_at = CURRENT_TIME WHERE id = $3`
+	_, err := r.db.Exec(r.ctx, query, req_dat.UserName, req_dat.Email, user_id)
 	if err != nil {
 		return err
 	}

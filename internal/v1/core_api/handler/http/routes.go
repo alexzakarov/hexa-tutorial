@@ -19,5 +19,6 @@ func MapRoutes(cfg *config.Config, h ports.IHandlers, router fiber.Router) {
 
 	*/
 	common := router.Group("/auth")
-	common.Post("/users", h.CreateUser)
+	common.Post("/users", h.CreateUser)           // /auth/users POST
+	common.Patch("/users/:user_id", h.UpdateUser) // /auth/users/10 PATCH
 }

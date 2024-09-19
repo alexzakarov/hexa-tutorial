@@ -8,6 +8,7 @@ import (
 	"main/internal/v1/core_api/domain/ports"
 	"main/pkg/logger"
 	cm "main/pkg/utils/common"
+	"main/pkg/utils/typeconv"
 	"main/pkg/utils/validator"
 )
 
@@ -27,7 +28,7 @@ func (h HandlerHttp) CreateUser(c *fiber.Ctx) error {
 
 	errParser := c.BodyParser(&dat)
 	if errParser != nil {
-		statusCode, responser = fiber.StatusBadGateway, cm.HTTPResponser(nil, true, errParser.Error())
+		statusCode, responser = fiber.StatusBadRequest, cm.HTTPResponser(nil, true, errParser.Error())
 		return c.Status(statusCode).JSON(responser) // Hemen yanıtı döndür
 	}
 
@@ -56,8 +57,36 @@ func (h HandlerHttp) GetUserById(c *fiber.Ctx) error {
 }
 
 func (h HandlerHttp) UpdateUser(c *fiber.Ctx) error {
-	//TODO implement me
-	panic("implement me")
+	var responser fiber.Map
+	var statusCode int
+	var data interface{}
+	dat := ent.UserReqDto{}
+
+	userId := typeconv.StrToInt64(c.Params("user_id"))
+
+	errParser := c.BodyParser(&dat)
+	if errParser != nil {
+		statusCode, responser = fiber.StatusBadRequest, cm.HTTPResponser(nil, true, errParser.Error())
+		return c.Status(statusCode).JSON(responser) // Hemen yanıtı döndür
+	}
+
+	errValidate := validator.Validate.Struct(dat)
+	if errValidate != nil {
+		statusCode, responser = fiber.StatusBadRequest, cm.HTTPResponser(nil, true, errValidate.Error())
+		return c.Status(statusCode).JSON(responser) // Hemen yanıtı döndür
+	}
+
+	if errParser == nil && errValidate == nil {
+		err := h.service.UpdateUser(int(userId), dat)
+		if err != nil {
+			statusCode, responser = fiber.StatusInternalServerError, cm.HTTPResponser(nil, true, cm.Translate("tr", "General.ERROR_DB"))
+		} else {
+			statusCode, responser = fiber.StatusOK, cm.HTTPResponser(data, false, cm.Translate("tr", "General.OK"))
+		}
+	}
+
+	return c.Status(statusCode).JSON(responser)
+
 }
 
 func (h HandlerHttp) DeleteUser(c *fiber.Ctx) error {

@@ -32,8 +32,8 @@ func (s serviceCore) GetUserById(userId int) (string, string, error) {
 	return s.pgRepo.GetUserById(userId)
 }
 
-func (s serviceCore) UpdateUser(userId int, newUsername, newEmail string) error {
-	return s.pgRepo.UpdateUser(userId, newUsername, newEmail)
+func (s serviceCore) UpdateUser(userId int, req_dat entities.UserReqDto) error {
+	return s.pgRepo.UpdateUser(userId, req_dat)
 }
 
 func (s serviceCore) DeleteUser(userId int) error {
