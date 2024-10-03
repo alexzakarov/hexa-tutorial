@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"github.com/jackc/pgx/v4/pgxpool"
 	"main/internal/v1/core_api/domain/entities"
-	"main/internal/v1/core_api/domain/ports"
 )
 
 // postgresqlRepo Struct
@@ -15,7 +14,7 @@ type postgresqlRepo struct {
 }
 
 // NewPostgresqlRepository Auth Domain postgresql repository constructor
-func NewPostgresqlRepository(ctx context.Context, db *pgxpool.Pool) ports.IPostgresqlRepository {
+func NewPostgresqlRepository(ctx context.Context, db *pgxpool.Pool) *postgresqlRepo {
 	return &postgresqlRepo{
 		ctx: ctx,
 		db:  db,
@@ -34,14 +33,13 @@ func (r *postgresqlRepo) CreateUser(req_dat entities.UserReqDto) error {
 }
 
 // read
-func (r *postgresqlRepo) GetUserById(userId int) (string, string, error) {
-	var username, email string
-	query := `SELECT username, email FROM users WHERE id = $1`
-	err := r.db.QueryRow(r.ctx, query, userId).Scan(&username, &email)
+func (r *postgresqlRepo) GetUserById(user_id int) (err error, data entities.UserResDto) {
+	query := `SELECT  user_name, email, password FROM users.users WHERE id = $1`
+	err = r.db.QueryRow(r.ctx, query, user_id).Scan(&data.UserName, &data.Email, &data.Password)
 	if err != nil {
-		return "", "", err
+		fmt.Println(err.Error())
 	}
-	return username, email, nil
+	return
 }
 
 // update
@@ -56,10 +54,11 @@ func (r *postgresqlRepo) UpdateUser(user_id int, req_dat entities.UserReqDto) er
 }
 
 // delete
-func (r *postgresqlRepo) DeleteUser(userId int) error {
-	query := `DELETE FROM users WHERE id = $1`
-	_, err := r.db.Exec(r.ctx, query, userId)
+func (r *postgresqlRepo) DeleteUser(id int64) error {
+	query := `DELETE FROM users.users WHERE id = $1`
+	_, err := r.db.Exec(r.ctx, query, id)
 	if err != nil {
+		fmt.Println(err.Error())
 		return err
 	}
 	return nil

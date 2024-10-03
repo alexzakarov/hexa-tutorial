@@ -28,7 +28,7 @@ func (s serviceCore) CreateUser(req_dat entities.UserReqDto) error {
 
 }
 
-func (s serviceCore) GetUserById(userId int) (string, string, error) {
+func (s serviceCore) GetUserById(userId int) (err error, data entities.UserResDto) {
 	return s.pgRepo.GetUserById(userId)
 }
 
@@ -36,8 +36,8 @@ func (s serviceCore) UpdateUser(userId int, req_dat entities.UserReqDto) error {
 	return s.pgRepo.UpdateUser(userId, req_dat)
 }
 
-func (s serviceCore) DeleteUser(userId int) error {
-	return s.pgRepo.DeleteUser(userId)
+func (s serviceCore) DeleteUser(id int64) error {
+	return s.pgRepo.DeleteUser(id)
 }
 
 // Example Service

@@ -28,3 +28,12 @@ type UserReqDto struct {
 	Password string `json:"password"`
 	HasGdpr  bool   `json:"has_gdpr"`
 }
+type UserResDto struct {
+	RoleId   int64  `json:"role_id"`
+	Email    string `json:"email"`
+	Phone    string `json:"phone"`
+	Address  string `json:"address"`
+	UserName string `json:"user_name"`
+	Password string `json:"password"`
+	HasGdpr  bool   `json:"has_gdpr"`
+}

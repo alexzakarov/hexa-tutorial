@@ -52,8 +52,36 @@ func (h HandlerHttp) CreateUser(c *fiber.Ctx) error {
 }
 
 func (h HandlerHttp) GetUserById(c *fiber.Ctx) error {
-	//TODO implement me
-	panic("implement me")
+	var responser fiber.Map
+	var statusCode int
+	var data interface{}
+	var err error
+	dat := ent.UserReqDto{}
+
+	userId := typeconv.StrToInt64(c.Params("user_id"))
+
+	errParser := c.BodyParser(&dat)
+	if errParser != nil {
+		statusCode, responser = fiber.StatusBadRequest, cm.HTTPResponser(nil, true, errParser.Error())
+		return c.Status(statusCode).JSON(responser)
+	}
+
+	errValidate := validator.Validate.Struct(dat)
+	if errValidate != nil {
+		statusCode, responser = fiber.StatusBadRequest, cm.HTTPResponser(nil, true, errValidate.Error())
+		return c.Status(statusCode).JSON(responser)
+	}
+
+	if errParser == nil && errValidate == nil {
+		err, data = h.service.GetUserById(int(userId))
+		if err != nil {
+			statusCode, responser = fiber.StatusInternalServerError, cm.HTTPResponser(nil, true, cm.Translate("tr", "General.ERROR_DB"))
+		} else {
+			statusCode, responser = fiber.StatusOK, cm.HTTPResponser(data, false, cm.Translate("tr", "General.OK"))
+		}
+	}
+
+	return c.Status(statusCode).JSON(responser)
 }
 
 func (h HandlerHttp) UpdateUser(c *fiber.Ctx) error {
@@ -90,8 +118,19 @@ func (h HandlerHttp) UpdateUser(c *fiber.Ctx) error {
 }
 
 func (h HandlerHttp) DeleteUser(c *fiber.Ctx) error {
-	//TODO implement me
-	panic("implement me")
+	var responser fiber.Map
+	var statusCode int
+
+	userId := typeconv.StrToInt64(c.Params("user_id"))
+
+	err := h.service.DeleteUser(userId)
+	if err != nil {
+		statusCode, responser = fiber.StatusInternalServerError, cm.HTTPResponser(nil, true, cm.Translate("tr", "General.ERROR_DB"))
+		return c.Status(statusCode).JSON(responser)
+	}
+
+	statusCode, responser = fiber.StatusOK, cm.HTTPResponser(nil, false, cm.Translate("tr", "General.OK"))
+	return c.Status(statusCode).JSON(responser)
 }
 
 // NewHttpHandler Core Domain HTTP handlers constructor
